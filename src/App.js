@@ -4,7 +4,7 @@ import './App.css';
 import Life from "./Life.js";
 
 function lifeUp(x) {
-  return x + 1;
+  return x + 2;
 }
 
 function LifeCounter(props) {

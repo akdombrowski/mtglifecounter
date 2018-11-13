@@ -27,6 +27,36 @@
   color: #61dafb;
 }
 
+.main-table {
+  width: 100vw;
+  justify-content: center;
+}
+
+.main-table-headers {
+  justify-content: left;
+  text-align: left;
+}
+
+/* Classes */
+td {
+  justify-content: left;
+  text-align: left;
+}
+
+form {
+  justify-content: left;
+  text-align: left;
+  min-width: 100vw;
+  width: 100vw;
+}
+
+input {
+  justify-content: left;
+  text-align: left;
+  min-width: 50vw;
+  width: 50vw;
+}
+
 .button-header {
   height: 100vh;
   justify-content: top;
@@ -76,12 +106,13 @@
 
 .add-player {
   height: 10vh;
+  width: 100vw;
 }
 
 .player-form {
   justify-content: center;
   height: 10vh;
-  width: 10vw;
+  width: 100vw;
 }
 
 @keyframes App-logo-spin {

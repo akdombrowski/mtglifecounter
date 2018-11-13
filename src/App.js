@@ -15,13 +15,74 @@ function LifeCounter(props) {
   );
 }
 
+function Lifer(props) {
+  return (
+    <td>Life: {props.life}</td>
+  );
+}
+
+function Player(props) {
+  return (
+    <th>Player: {props.player}</th>
+  )
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lifes: Array(1).fill(<Life lifeval="40" playeridval="1"></Life>),
+      players: [{name: "a", life: 40}, {name: "b", life: 40}],
+      newPlayer: null,
+      newLife: null,
+    }
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleLifeChange = this.handleLifeChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleNameChange(event) {
+    let x = this.state.players.slice();
+    if (this.state.life != null && this.state.Life < 0) {
+      x.push({name: this.state.name, life: event.target.value})
+      this.setState({
+        players: x,
+        newPlayer: null,
+        newLife: null
+      })
+    } 
+    else{
+      this.setState({
+        players: x,
+        newPlayer: event.target.value,
+        newLife: null
+      });
+    }
+  }
+
+  handleLifeChange(event) {
+    let x = this.state.players.slice();
+    if (this.state.newPlayer != null && this.state.newPlayer != "") {
+      x.push({name: this.state.name, life: event.target.value})
+      this.setState({
+        players: x,
+        newPlayer: null,
+        newLife: null
+      })
+    } 
+    else{
+      this.setState({
+        players: x,
+        newPlayer: null,
+        newLife: event.target.value
+      });
     }
     
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.players.toString() + ' ' + this.state.newPlayer + ' ' + this.state.newLife);
+    event.preventDefault();
   }
 
   render() { 
@@ -29,38 +90,29 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <table className="life-table">
-            <th>{this.state.lifes}</th>
+          <table>
+            <tbody>
+          {this.state.players.map((state) => {
+            return (
+              <tr>
+                <td key={state.name}>{state.name}: {state.life}</td>
+              </tr>
+            );
+          })}
+          </tbody>
           </table>
-          
           <div className="Add-player">
-            {/* <button
-              className="add-player"
-              type="submit"
-              value="Player Name"
-              onClick={
-                () => {
-                  var newArr = this.state.lifes.slice();
-                  newArr.push(<Life lifeval="40" playeridval="2"></Life>);
-                  this.setState(
-                    {
-                      lifes: newArr,
-                    });
-                }
-              }
-            >
-              Player Name
-            </button> */
-            <form className="player-form">
+
+            <form id="addp" className="player-form" onSubmit={this.handleSubmit}>
               Player Name:
-              <input type="text" name="playername"></input>
+              <input type="text" name="Player Name" onChange={this.handleNameChange}></input>
               <br></br>
               Life Value:
-              <input type="text" name="lifevalue"></input>
+              <input type="number" life="Life Total" onChange={this.handleLifeChange}></input>
               <br></br>
-              <input type="submit" value="Add Player"></input>
+              <input type="submit" value="Add Player">
+              </input>
             </form>
-            }
           </div>
         </header>
       </div>

@@ -1,32 +1,220 @@
+/* Named Classes */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  align-items: stretch;
+  align-content: space-between;
+  background-color: #282c34;
 }
 
 .App-header {
+  order: 1;
+  flex-grow: 1;
+  align-self: center;
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  max-height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  max-height: 40vh;
 }
 
+/* Main table */
+.main-table-container {
+  order: 2;
+  flex-grow: 10;
+  align-self: center;
+  width: 100vw;
+  display: grid;
+  grid-column-gap: 0vmin;
+  grid-row-gap: 0vmin;
+  grid-template-columns: 20vw 20vw 60vw;
+  grid-template-rows: auto;
+  place-items: stretch;
+  place-content: stretch;
+}
+
+/* First row for titles */ 
+/* Table headers for titles of cols */
+.main-table-headers {
+  grid-row-start: 1;
+  color: white;
+  font-size: 3vmin;
+  border: 1vmin solid silver;
+  text-align: center;
+  padding: 2vmin 2vmin;
+}
+
+#name {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+#life {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+#lifeChangeHeader {
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+}
+
+.player-buttons-row {
+  grid-column: 1 / 4;
+  display: grid;
+  place-items: stretch;
+  place-content: stretch;
+  width: 100vw;
+  grid-template-columns: 20vw 20vw 60vw;
+}
+
+.cell-info-name {
+  grid-column: 1 / 2;
+}
+
+.cell-info-life {
+  grid-column: 2 / 3;
+}
+
+.cel-info-buttons {
+  grid-column: 3 / 6;
+}
+
+form {
+  justify-content: left;
+  text-align: left;
+  min-width: 100vw;
+  width: 100vw;
+}
+
+input {
+  justify-content: left;
+  text-align: left;
+  min-width: 50vw;
+  width: 50vw;
+}
+
+.button-header {
+  height: 100vh;
+  justify-content: top;
+  border: none;
+  background-color: inherit;
+  padding: 10vmin 10vmin;
+}
+
+.life-up {
+  background-color: #C1CDCD;
+  color: #0000FF;
+  height: 10vh;
+  width: 10vw;
+  border: none;
+  background-color: inherit;
+  padding: 1vmin 1vmin;
+  cursor: pointer;
+}
+
+
+/* Cells with player name or life info */
+.cell-info {
+  color: white;
+  size: 100%;
+  font-size: 4vw;
+}
+
+.life-change {
+  display: inline-block;
+  border: 100vmin 100vmin;
+  padding: 1vmin 1vmin;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  padding: 0vmin 0vmin;
+  /* flex-direction: row; */
+  /* align-self: left; */
+  /* align-content: left; */
+  /* justify-content: left; */
+  /* justify-items: left; */
+  /* justify-self: left; */
+  font-size: 3vmin;
+  width: 20%;
+}
+
+/* "Change" header, header for life change buttons */
+
+/* Table cell containing life change buttons */
+#lifeChangeButtons {
+  width: 10s0vw;
+}
+
+/* Buttons to change life */
+#lifeup {
+  background-color: skyblue;
+  color: blue;
+  border-color: purple;
+}
+
+#lifedown {
+  background-color: lightpink;
+  color: #ff0000;
+  border-color: firebrick;
+}
+
+/* Adding a player form */
+.add-player-form-div {
+  order: 3;
+  flex-grow: 5;
+}
+
+.add-player {
+  height: 10vh;
+  width: 100vw;
+}
+
+.player-form {
+  justify-content: center;
+  color: white;
+  /* height: 100vh;
+  width: 100vw; */
+}
+
+.name-input {
+  /* width: 50vw;
+  height: 100vh; */
+}
+
+.life-input {
+  /* width: 50vw;
+  height: 100vh; */
+  height: 10vh;
+  width: 100vw;
+}
+
+.player-add-submit {
+  /* width: 100vw; */
+}
+
+.reset-button {
+  /* width: 50vw; */
+}
+
+/* Ids */
+#addp {
+  /* width: 100vw; */
+}
+/* Logo Animation */
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  0% {
+    transform: rotate(-20deg);
   }
-  to {
-    transform: rotate(360deg);
+  49% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(-20deg);
   }
 }

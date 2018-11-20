@@ -12,6 +12,19 @@ class App extends Component {
       newLife: null,
       store: fire.firestore(),
     }
+    
+    const db = this.state.store;
+    var query = db.collection("Game1")
+      .where('name', '==', "a").get() // find document where name == "a"
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            console.log(doc.id, '=>', doc.data()); // doc.id returns id of document where it found name == a
+            // doc.data returns the data stored inside that doc
+          });
+        })
+        .catch(err => {
+          console.log('Error getting documents', err);
+    });
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleLifeChange = this.handleLifeChange.bind(this);
@@ -35,6 +48,13 @@ class App extends Component {
     }
     x[y] = {name: x[y].name, life: l};
   
+    const db = this.state.store;
+    db.setting({
+      timestampsInSnapshots: true
+    })
+    
+    const userRef = db.collection("Game1").document("Player1");
+    
     this.setState({
       players: x,
       newPlayer: np,
@@ -70,6 +90,26 @@ class App extends Component {
     let n = this.state.newPlayer;
     let l = Number(this.state.newLife);
     arr.push({name: n, life: l});
+    
+    const db = this.state.store;
+    db.settings({
+      timestampsInSnapshots: true
+    })
+    
+    const col = db.collection("Game1");
+    col.add({
+      name: n, life: l
+    });
+    
+    db.collection('Game1').get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
+    });
+  })
+  .catch((err) => {
+    console.log('Error getting documents', err);
+  });
     this.setState({
       players: arr,
       newPlayer: null,

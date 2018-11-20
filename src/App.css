@@ -66,6 +66,7 @@
 
 .player-buttons-row {
   grid-column: 1 / 4;
+  color: white;
   display: grid;
   place-items: stretch;
   place-content: stretch;

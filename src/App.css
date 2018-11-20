@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   flex-flow: column;
-  justify-content: stretch;
+  justify-content: center;
   align-items: stretch;
   align-content: space-between;
   background-color: #282c34;
@@ -21,12 +21,14 @@
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
   max-height: 40vh;
+  flex-basis: 20%;
 }
 
 /* Main table */
 .main-table-container {
   order: 2;
-  flex-grow: 10;
+  flex-grow: 3;
+  flex-basis: 40%;
   align-self: center;
   width: 100vw;
   display: grid;
@@ -94,10 +96,9 @@ form {
 }
 
 input {
-  justify-content: left;
-  text-align: left;
+  justify-content: right;
+  text-align: right;
   min-width: 50vw;
-  width: 50vw;
 }
 
 .button-header {
@@ -165,10 +166,12 @@ input {
   border-color: firebrick;
 }
 
-/* Adding a player form */
+/* Adding a player, form */
 .add-player-form-div {
   order: 3;
-  flex-grow: 5;
+  grid-column: 1/4;
+  place-self: stretch;
+  flex-grow: 1;
 }
 
 .add-player {
@@ -184,8 +187,7 @@ input {
 }
 
 .name-input {
-  /* width: 50vw;
-  height: 100vh; */
+  
 }
 
 .life-input {

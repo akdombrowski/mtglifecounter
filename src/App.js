@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './mtglogotransback.png';
 import './App.css';
 import Life from "./Life.js";
+import { Button, Container, Col, Row } from 'reactstrap';
 
 function lifeUp(x) {
   return x + 1;
@@ -21,20 +22,24 @@ class App extends Component {
     this.state = {
       lifes: Array(1).fill(<Life lifeval="40" playeridval="1"></Life>),
     }
-    
+
   }
 
-  render() { 
+  render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <table className="life-table">
-            <th>{this.state.lifes}</th>
-          </table>
-          
-          <div className="Add-player">
-            {/* <button
+      <Container fluid className="App">
+        <Row>
+          <Col>
+            <img src={logo} className="App-logo" alt="logo" />
+          </Col>
+          <Col>
+            <table className="life-table">
+              <th>{this.state.lifes}</th>
+            </table>
+          </Col>
+          <Col>
+            <div className="Add-player">
+              <Button
               className="add-player"
               type="submit"
               value="Player Name"
@@ -50,20 +55,21 @@ class App extends Component {
               }
             >
               Player Name
-            </button> */
-            <form className="player-form">
-              Player Name:
+            </Button>
+                <form className="player-form">
+                  Player Name:
               <input type="text" name="playername"></input>
-              <br></br>
-              Life Value:
+                  <br></br>
+                  Life Value:
               <input type="text" name="lifevalue"></input>
-              <br></br>
-              <input type="submit" value="Add Player"></input>
-            </form>
-            }
-          </div>
-        </header>
-      </div>
+                  <br></br>
+                  <input type="submit" value="Add Player"></input>
+                </form>
+              }
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
